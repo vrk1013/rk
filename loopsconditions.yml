@@ -24,4 +24,7 @@
       - git
       - wget
       - tree
+      - apache2
+      - php
+      - Mysql
     when: ansible_os_family =="Debian"
