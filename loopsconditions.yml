@@ -11,6 +11,9 @@
       - git
       - wget
       - tree
+      - apache2
+      - php
+      - Mysql
     when: ansible_os_family =="RedHat"
 
   - name: install git wget tree on ubuntu
