@@ -1,0 +1,35 @@
+---
+- hosts: webserver
+  become: yes
+  tasks:
+  - include_tasks: innclude.yml
+  - name: install  httpd pakg on redhat
+    yum:
+      name: httpd
+      state: present
+    notify: httpdservice
+    when: ansible_os_family =="RedHat"
+
+  - name: install  apache2  pakg on ubuntu
+    apt:
+      name: apache2
+      state: present
+    notify: apache2service
+    when: ansible_os_family =="Debian"
+  
+  - name: deploy the index.html page in all ubuntu webserver
+    template:
+      src: indexhtml.j2
+      dest: /var/www/html/index.html
+  
+  handlers:
+  - name: httpdservice
+    service:
+      name: httpd
+      state: restarted
+      enabled: yes
+  - name: apache2service
+    service:
+      name: apache2
+      state: restarted
+      enabled: yes

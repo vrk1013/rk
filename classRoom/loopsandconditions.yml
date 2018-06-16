@@ -1,0 +1,23 @@
+---
+- hosts: webserver
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: install git, tree, wget  in a loop on =="RedHat"
+    yum:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - git
+      - tree
+      - wget
+    when: ansible_os_family =="RedHat"
+  - name: install git, tree, wget  in a loop on =="Ubuntu"
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - git
+      - tree
+      - wget
+    when: ansible_os_family =="Debian"

@@ -1,0 +1,4 @@
+---
+javaforUbuntu: openjdk-6-jre
+javaforRedhat: java-1.6.0-openjdk
+mycomname: SKR

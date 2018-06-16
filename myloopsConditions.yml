@@ -1,0 +1,24 @@
+---
+- hosts: webserveres
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: install git wget tree on redhat
+    yum:
+      name: "{{ item }}" 
+      state: present
+    with_items:
+      - git
+      - wget
+      - tree
+    when: ansible_os_family =="RedHat"
+
+  - name: install git wget tree on ubuntu
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - git
+      - wget
+      - tree
+    when: ansible_os_family =="Debian"

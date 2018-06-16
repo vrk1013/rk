@@ -1,0 +1,14 @@
+---
+
+- name: install httpd webserver
+  yum: 
+    name: "{{httpdpakg}}"
+    state: present
+  notify: httpdservicerestart
+  when: ansible_os_family =="RedHat"
+
+- name:  copy the file from ansible server to all nodes
+  template:
+    src: templates/index.j2
+    dest: /var/www/html/index.html
+  

@@ -1,0 +1,7 @@
+---
+# handlers file for webserverole
+- name: httpdservicerestart
+  service:
+    name: "{{httpdpakg}}"
+    state: restarted
+    enabled: yes

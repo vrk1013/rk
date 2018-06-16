@@ -1,0 +1,13 @@
+[redhat]
+172.31.20.43
+172.31.19.42
+
+
+[ubuntu]
+172.31.27.98
+
+[localhost]
+localhost
+
+[appserver]
+172.31.22.238

@@ -1,0 +1,14 @@
+---
+# handlers file for tom7install
+- name: starttomcat
+  service:
+    name: tomcat
+    state: started
+    enabled: yes
+- name: restarttomcat
+  service:
+    name: tomcat
+    state: restarted
+    
+
+    

@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: installing git in nodes
+    yum:
+      name: git
+      state: present
+  - name: installing httpd in nodes
+    yum:
+      name: httpd
+      state: present
+  - name: start the httpd service
+    service:
+      name: httpd
+      state: started
+      enabled: yes

@@ -1,0 +1,27 @@
+---
+# tasks file for tom7install
+- name: intall tomcat by installed java7 and tomcat user and group
+  yum:
+    name: tomcat
+    state: present
+  notify: starttomcat
+  when: ansible_os_family =="RedHat"
+- name: copy the config file
+  template:
+    src: templates/tomcatcong.j2
+    dest: /usr/share/tomcat/conf/tomcat.conf
+  when: ansible_os_family =="RedHat"
+- name: install tomact manager
+  yum:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - tomcat-webapps
+    - tomcat-admin-webapps
+  when: ansible_os_family =="RedHat"
+- name: copy the config file
+  template:
+    src: templates/tomuser.j2
+    dest: /usr/share/tomcat/conf/tomcat-users.xml
+  notify: restarttomcat
+  when: ansible_os_family =="RedHat"    

@@ -1,0 +1,7 @@
+---
+  - name: create a file on all Appserver
+    file:
+      path: /home/maha/myfile.txt
+      state: touch
+      mode: "oug=rwx"
+    when: ansible_os_family =="RedHat"

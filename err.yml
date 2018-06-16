@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    debugaval1: register data
+    debugaval2: set facts
+  gather_facts: yes
+  tasks:
+  - name: install basic software for devlopments for redhat
+    yum:
+      name: "{{ item }}"
+    with_itemss:
+      - git
+      - tree
+      - wget
+    ignore_errors: yes
+    when: ansible_os_family =="RedHat"
+  - name: install basic software for devlopments for debian
+    apt:
+      name: "{{ item }}"
+    with_items:
+      - git
+      - tree
+      - wget
+    ignore_errors: yes
+    when: ansible_os_family =="Debian"

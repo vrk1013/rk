@@ -1,0 +1,14 @@
+---
+- devopsstudents:
+  - name: kiran
+    phono: 787979
+    email: kiram@gmail.com
+  - name: hari
+    phono: 4545566
+    email: hari@gmail.com
+  - name: ashwi
+    phono: 4564
+    email: ashwin@gmail.com
+  - name: swamy
+    phono: 4564
+    email: swamy@gmail.com

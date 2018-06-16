@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: installing apache2 in nodes
+    apt:
+      name: apache2
+      state: present
+  - name: installing apache2 in nodes
+    apt:
+      name: apache2
+      state: present
+      

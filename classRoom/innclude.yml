@@ -1,0 +1,6 @@
+---
+- name: creat the file in all nodes
+  file:
+    path: /home/ansible/text.txt
+    state: touch
+    mode: "oug=rwx"

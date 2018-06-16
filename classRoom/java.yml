@@ -1,0 +1,16 @@
+---
+- hosts: webserver
+  become: yes
+  vars:
+    javatext: install java7 on redaht
+  tasks:
+  - name: "{{javatext}}"
+    yum:
+      name: "{{ javaversion7_redhat }}"
+      state: present
+    when: ansible_os_family =="RedHat"
+  - name: install java7 on ubuntu
+    apt:
+      name: "{{ javaversion7_ubuntu }}"
+      state: present
+    when: ansible_os_family =="Debian"

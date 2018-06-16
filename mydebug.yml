@@ -1,0 +1,24 @@
+---
+- hosts: Appserver
+  become: yes
+  tasks:
+  - name: check host name
+    command: hostname -f
+    register: myresult
+
+  - name: see the myresult
+    debug:
+      msg:  "{{ myresult }}"
+
+  - name: install httpd
+    yum:
+      name: httpd
+      state: present
+    when: myresult.stderr ==""
+
+  - name: install git
+    yum:
+      name: git
+      state: present
+    when: myresult.stderr !=""
+    

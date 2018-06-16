@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yed
+  tasks:
+  - name: installing git in nodes
+    apt:
+      name: git
+      
+   

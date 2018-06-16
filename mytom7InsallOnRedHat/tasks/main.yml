@@ -1,0 +1,33 @@
+---
+# tasks file for mytom7InsallOnRedHat
+- name: install tomcat7 on RedHat
+  yum:
+    name: tomcat
+    state: present
+  notify: starttomcat
+  when: ansible_os_family =="RedHat"
+
+- name:  copy tomcat conf file from master to all application servers
+  template:
+    src: templates/tomcatconf.j2
+    dest: /usr/share/tomcat/conf/tomcat.conf
+  when: ansible_os_family =="RedHat"
+
+- name: install tomcat admin 
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - tomcat-webapps
+    - tomcat-admin-webapps
+  when: ansible_os_family =="RedHat"
+
+- name: copy tomcat user xml file from master to all applicatoin servers
+  template:
+    src: templates/tomuser.j2
+    dest: /usr/share/tomcat/conf/tomcat-users.xml
+  notify: restarttomcat
+  when: ansible_os_family =="RedHat"
+
+
+  

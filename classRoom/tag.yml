@@ -1,0 +1,24 @@
+---
+- hosts: redhat
+  become: yes
+  tasks:
+  - name: install git
+    yum:
+      name: git
+      state: present
+    when: ansible_os_family =="RedHat"
+    tags: gitinstall
+
+  - name: install tree
+    yum:
+      name: tree
+      state: present
+    when: ansible_os_family =="RedHat"
+    tags: treeinstall
+
+  - name: install wget
+    yum:
+      name: wget
+      state: present
+    when: ansible_os_family =="RedHat"
+    tags: wgetinstall
